@@ -1,5 +1,8 @@
 let titles = [];
 let texts = [];
+let titlesAsText = "[]";
+let textsAsText = "[]";
+
 
 function init() {
   renderNotes();
@@ -32,6 +35,7 @@ function addNote() {
   titles.push(noteTitle);
   texts.push(noteText);
   renderNotes();
+  saveNotes();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
 }
@@ -40,6 +44,16 @@ function deleteNote(i) {
   titles.splice(i, 1);
   texts.splice(i, 1);
   renderNotes();
+  saveNotes();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
+}
+
+function saveNotes(){
+let titlesAsText = JSON.stringify(titles);
+let textsAsText = JSON.stringify(texts);
+localStorage.setItem('titles', titlesAsText);
+localStorage.setItem('texts', textsAsText);
+
+
 }
