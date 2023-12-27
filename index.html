@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notizen</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/img/flat.png" />
+  </head>
+  <body onload="init()">
+    <header>
+      <h1>Meine Notizen</h1>
+    </header>
+    <main>
+      <section class="firstSection">
+        <div class="inputFields">
+          <textarea
+            type="text"
+            class="title"
+            placeholder="Titel"
+            id="titleInput"
+            maxlength="19"
+          ></textarea>
+          <textarea
+            type="text"
+            class="text"
+            placeholder="Beschreibung"
+            id="textInput"
+            maxlength="60"
+          ></textarea>
+          <button class="add-note" onclick="addNote()">
+            Notiz hinzufügen
+          </button>
+        </div>
+      </section>
+      <section id="new_notes" class="new-notes">
+        <!-- <textarea id="newTitle" class="title"></textarea> -->
+        <!-- <textarea id="newText" class="text"></textarea> -->
+      </section>
+    </main>
+    <footer>
+      <p>2023</p>
+    </footer>
+  </body>
+</html>
