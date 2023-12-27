@@ -20,14 +20,16 @@
             class="title"
             placeholder="Titel"
             id="titleInput"
-            maxlength="19"
+            maxlength="25" 
+            required
           ></textarea>
           <textarea
             type="text"
             class="text"
             placeholder="Beschreibung"
             id="textInput"
-            maxlength="60"
+            maxlength="50" 
+            required
           ></textarea>
           <button class="add-note" onclick="addNote()">
             Notiz hinzufügen
@@ -35,8 +37,6 @@
         </div>
       </section>
       <section id="new_notes" class="new-notes">
-        <!-- <textarea id="newTitle" class="title"></textarea> -->
-        <!-- <textarea id="newText" class="text"></textarea> -->
       </section>
     </main>
     <footer>
