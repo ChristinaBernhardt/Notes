@@ -1,5 +1,5 @@
-let titles = ['Haushalt'];
-let texts = ['Bad putzen'];
+let titles = [];
+let texts = [];
 
 function init() {
   renderNotes();
@@ -31,6 +31,14 @@ function addNote() {
 
   titles.push(noteTitle);
   texts.push(noteText);
+  renderNotes();
+  document.getElementById('titleInput').value = '';
+  document.getElementById('textInput').value = '';
+}
+
+function deleteNote(i) {
+  titles.splice(i, 1);
+  texts.splice(i, 1);
   renderNotes();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
