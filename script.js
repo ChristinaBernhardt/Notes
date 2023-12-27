@@ -3,6 +3,7 @@ let texts = [];
 let titlesAsText = "[]";
 let textsAsText = "[]";
 
+load();
 
 function init() {
   renderNotes();
@@ -54,4 +55,12 @@ let titlesAsText = JSON.stringify(titles);
 let textsAsText = JSON.stringify(texts);
 localStorage.setItem('titles', titlesAsText);
 localStorage.setItem('texts', textsAsText);
+}
+
+function load(){
+  let titlesAsText = localStorage.getItem('titles');
+  let textsAsText = localStorage.getItem('texts');
+  if (titlesAsText && textsAsText) {
+  titles = JSON.parse(titlesAsText);
+  texts = JSON.parse(textsAsText);}
 }
