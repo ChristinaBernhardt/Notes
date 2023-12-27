@@ -54,6 +54,4 @@ let titlesAsText = JSON.stringify(titles);
 let textsAsText = JSON.stringify(texts);
 localStorage.setItem('titles', titlesAsText);
 localStorage.setItem('texts', textsAsText);
-
-
 }
