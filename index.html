@@ -14,12 +14,17 @@
 <body onload="init()">
   <header>
     <h1>Meine Notizen</h1>
+    <img class="burgerMenu" src="./img/bars-solid (1).svg" onclick="showOverlay()">
+    <div class="overlay" id="overlay">
+        <img src="./img/note_list_icon_124054.png" alt="">
+        <img src="./img/trash.png" alt="">
+        <button onclick="deleteOverlay()">close</button>
+    </div>
   </header>
   <main>
     <section class="firstSection">
       <form onsubmit="addNote()">
         <div class="inputFields">
-          <!-- Warum wird "required nicht akzeptiert? Auch bei nächster Textarea" -->
           <textarea class="title" placeholder="Titel" id="titleInput" maxlength="25" required></textarea>
           <textarea class="text" placeholder="Beschreibung" id="textInput" maxlength="50" required></textarea>
           <button type="submit" class="add-note">
@@ -33,7 +38,8 @@
     </section>
   </main>
   <footer>
-    <p>2023</p>
+    <p>2023 Christina Bernhardt</p>
+    <p>ICONS by www.fontawesome.com</p>
   </footer>
 </body>
 

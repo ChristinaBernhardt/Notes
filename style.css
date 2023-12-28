@@ -16,6 +16,35 @@ img {
   height: 50px;
 }
 
+.burgerMenu {
+position: absolute;
+right: 16px;
+color: black;
+width: 50px;
+cursor: pointer;
+}
+
+.overlay {
+  background-color: white;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 200px;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+  border-left: 1px solid grey;
+  transform: translateX(105px);
+  transition: all 225ms ease-in-out;
+}
+.showOverlay {
+  transform: translateX(0);
+
+}
+
 header {
   height: 50px;
   width: 100vw;

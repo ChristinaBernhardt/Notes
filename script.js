@@ -29,6 +29,14 @@ function generateNotesHTML(i, title, text) {
         `;
 }
 
+function showOverlay(){
+  document.getElementById('overlay').classList.add('showOverlay');
+}
+
+function deleteOverlay(){
+  document.getElementById('overlay').classList.remove('showOverlay');
+}
+
 function addNote() {
   let noteTitle = document.getElementById('titleInput').value;
   let noteText = document.getElementById('textInput').value;
@@ -63,4 +71,15 @@ function load(){
   if (titlesAsText && textsAsText) {
   titles = JSON.parse(titlesAsText);
   texts = JSON.parse(textsAsText);}
+}
+
+
+function renderTrash() {
+  // const notesGallery = document.getElementById('new_notes');
+  // notesGallery.innerHTML = '';
+  // for (let i = 0; i < titles.length; i++) {
+  //   let title = titles[i];
+  //   let text = texts[i];
+  //   notesGallery.innerHTML += generateNotesHTML(i, title, text);
+  // }
 }
