@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notizen</title>
   <script src="script.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="/img/flat.png" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="img/education_school_memo_pad_notes_reminder_task_icon_133450 (1).png">
+  
 </head>
 
 <body onload="init()">
@@ -16,14 +17,17 @@
   </header>
   <main>
     <section class="firstSection">
-      <div class="inputFields">
-        <!-- Warum wird "required nicht akzeptiert? Auch bei nächster Textarea" -->
-        <textarea class="title" placeholder="Titel" id="titleInput" maxlength="25" required></textarea>
-        <textarea class="text" placeholder="Beschreibung" id="textInput" maxlength="50" required></textarea>
-        <button class="add-note" onclick="addNote()">
-          Notiz hinzufügen
-        </button>
-      </div>
+      <form onsubmit="addNote()">
+        <div class="inputFields">
+          <!-- Warum wird "required nicht akzeptiert? Auch bei nächster Textarea" -->
+          <textarea class="title" placeholder="Titel" id="titleInput" maxlength="25" required></textarea>
+          <textarea class="text" placeholder="Beschreibung" id="textInput" maxlength="50" required></textarea>
+          <button type="submit" class="add-note">
+            Notiz hinzufügen
+          </button>
+        </div>
+      </form>
+
     </section>
     <section id="new_notes" class="new-notes">
     </section>
