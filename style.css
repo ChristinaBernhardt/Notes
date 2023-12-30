@@ -93,6 +93,7 @@ body {
 textarea {
   font-family: 'Arial', sans-serif;
   resize: none;
+  cursor: pointer;
 }
 
 textarea::placeholder {
@@ -108,11 +109,14 @@ textarea::placeholder {
 }
 
 .trashed-notes {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
   align-items: center;
+}
+.show-trashed-notes {
+  display: flex;
 }
 
 .note-card {
@@ -155,5 +159,8 @@ button {
   border-radius: 4px;
   color: white;
   background-color: grey;
+  cursor: pointer;
+}
+.icons {
   cursor: pointer;
 }

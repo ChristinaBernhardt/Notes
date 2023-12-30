@@ -105,3 +105,11 @@ function saveTrash(){
     trashedTitles = JSON.parse(trasehdTitlesAsText);
     trashedTexts = JSON.parse(trasehdTextsAsText);}
   }
+
+  function showTrashedNotes(){
+    document.getElementById('trashed_notes').classList.add('show-trashed-notes');
+  }
+
+  function hideTrashedNotes(){
+    document.getElementById('trashed_notes').classList.remove('show-trashed-notes');
+  }

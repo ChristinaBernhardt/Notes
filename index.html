@@ -16,8 +16,8 @@
     <h1>Meine Notizen</h1>
     <img class="burgerMenu" src="./img/bars-solid (1).svg" onclick="showOverlay()">
     <div class="overlay" id="overlay">
-        <img src="./img/note_list_icon_124054.png" alt="">
-        <img src="./img/trash.png" alt="">
+        <img class="icons" src="./img/note_list_icon_124054.png" alt="Meine Notizen" onclick="hideTrashedNotes()">
+        <img class="icons" src="./img/trash.png" alt="Papierkorb" onclick="showTrashedNotes()">
         <button onclick="deleteOverlay()">close</button>
     </div>
   </header>
@@ -39,6 +39,7 @@
     </section>
 
     <section id="trashed_notes" class="trashed-notes">
+     
     </section>
   </main>
 
