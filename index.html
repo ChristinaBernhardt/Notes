@@ -11,7 +11,7 @@
   
 </head>
 
-<body onload="init()">
+<body onload="init()" >
   <header>
     <h1>Meine Notizen</h1>
     <img class="burgerMenu" src="./img/bars-solid (1).svg" onclick="showOverlay()">
@@ -21,7 +21,8 @@
         <button onclick="deleteOverlay()">close</button>
     </div>
   </header>
-  <main>
+
+  <main onclick="deleteOverlay()">
     <section class="firstSection">
       <form onsubmit="addNote()">
         <div class="inputFields">
@@ -36,7 +37,12 @@
     </section>
     <section id="new_notes" class="new-notes">
     </section>
+
+    <section id="trashed_notes" class="trashed-notes">
+    </section>
   </main>
+
+
   <footer>
     <p>2023 Christina Bernhardt</p>
     <p>ICONS by www.fontawesome.com</p>

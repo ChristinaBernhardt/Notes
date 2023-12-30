@@ -2,11 +2,18 @@ let titles = [];
 let texts = [];
 let titlesAsText = "[]";
 let textsAsText = "[]";
+let trashedTitels = ['Müll'];
+let trashedTexts = ['gelöscht'];
+let trashedTitelsAsText = "[]";
+let trashedTextsAsText = "[]";
+
 
 load();
+loadTrash();
 
 function init() {
   renderNotes();
+  renderTrash();
 }
 
 function renderNotes() {
@@ -54,6 +61,7 @@ function deleteNote(i) {
   texts.splice(i, 1);
   renderNotes();
   saveNotes();
+  saveTrash();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
 }
@@ -73,13 +81,27 @@ function load(){
   texts = JSON.parse(textsAsText);}
 }
 
-
 function renderTrash() {
-  // const notesGallery = document.getElementById('new_notes');
-  // notesGallery.innerHTML = '';
-  // for (let i = 0; i < titles.length; i++) {
-  //   let title = titles[i];
-  //   let text = texts[i];
-  //   notesGallery.innerHTML += generateNotesHTML(i, title, text);
-  // }
+  const notesGallery = document.getElementById('trashed_notes');
+  notesGallery.innerHTML = '';
+  for (let i = 0; i < trashedTitels.length; i++) {
+    let trashedTitle = trashedTitels[i];
+    let trashedText = trashedTexts[i];
+    notesGallery.innerHTML += generateNotesHTML(i, trashedTitle, trashedText);
+  }
 }
+
+function saveTrash(){
+  let trashedTitlesAsText = JSON.stringify(trashedTitles);
+  let trashedTextsAsText = JSON.stringify(trashedTexts);
+  localStorage.setItem('trashedTitles', trashedTitlesAsText);
+  localStorage.setItem('trashedTexts', trashedTextsAsText);
+  }
+  
+  function loadTrash(){
+    let trashedTitlesAsText = localStorage.getItem('trashedTitles');
+    let trashedTextsAsText = localStorage.getItem('trashedTexts');
+    if (trashedTitlesAsText && trashedTextsAsText) {
+    trashedTitles = JSON.parse(trasehdTitlesAsText);
+    trashedTexts = JSON.parse(trasehdTextsAsText);}
+  }
