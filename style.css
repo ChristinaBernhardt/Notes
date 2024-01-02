@@ -108,12 +108,18 @@ textarea::placeholder {
   align-items: center;
 }
 
+.d-none-new-notes {
+  display: none;
+}
+
 .trashed-notes {
   display: none;
   flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
   align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 .show-trashed-notes {
   display: flex;

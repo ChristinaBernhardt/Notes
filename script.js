@@ -8,6 +8,7 @@ let trashedTitelsAsText = "[]";
 let trashedTextsAsText = "[]";
 
 
+
 load();
 loadTrash();
 
@@ -64,6 +65,8 @@ function deleteNote(i) {
   saveTrash();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
+  // let deleted = titles.splice(i, 1); trashedTitles.push(deleted);
+  // let deleted = texts.splice(i, 1); trashedTexts.push(deleted);
 }
 
 function saveNotes(){
@@ -108,8 +111,10 @@ function saveTrash(){
 
   function showTrashedNotes(){
     document.getElementById('trashed_notes').classList.add('show-trashed-notes');
+    document.getElementById('new_notes').classList.add('d-none-new-notes');
   }
 
   function hideTrashedNotes(){
     document.getElementById('trashed_notes').classList.remove('show-trashed-notes');
+    document.getElementById('new_notes').classList.remove('d-none-new-notes');
   }
