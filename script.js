@@ -2,12 +2,10 @@ let titles = [];
 let texts = [];
 let titlesAsText = "[]";
 let textsAsText = "[]";
-let trashedTitels = ['Müll'];
-let trashedTexts = ['gelöscht'];
-let trashedTitelsAsText = "[]";
+let trashedTitles = [];
+let trashedTexts = [];
+let trashedTitlesAsText = "[]";
 let trashedTextsAsText = "[]";
-
-
 
 load();
 loadTrash();
@@ -27,6 +25,16 @@ function renderNotes() {
   }
 }
 
+function renderTrash() {
+  const notesGallery = document.getElementById('trashed_notes');
+  notesGallery.innerHTML = '';
+  for (let i = 0; i < trashedTitles.length; i++) {
+    let trashedTitle = trashedTitles[i];
+    let trashedText = trashedTexts[i];
+    notesGallery.innerHTML += generateNotesHTML(i, trashedTitle, trashedText);
+  }
+}
+
 function generateNotesHTML(i, title, text) {
    return /* html */ `
         <div class="note-card">
@@ -37,6 +45,8 @@ function generateNotesHTML(i, title, text) {
         `;
 }
 
+// Burgermenü ein und aus
+
 function showOverlay(){
   document.getElementById('overlay').classList.add('showOverlay');
 }
@@ -45,10 +55,22 @@ function deleteOverlay(){
   document.getElementById('overlay').classList.remove('showOverlay');
 }
 
+// Menü: Ansicht ändern von Notes auf Trash und zurück
+
+function showTrashedNotes(){
+  document.getElementById('trashed_notes').classList.add('show-trashed-notes');
+  document.getElementById('new_notes').classList.add('d-none-new-notes');
+}
+
+function hideTrashedNotes(){
+  document.getElementById('trashed_notes').classList.remove('show-trashed-notes');
+  document.getElementById('new_notes').classList.remove('d-none-new-notes');
+}
+
+// Hinzufügen neuer Notizen
 function addNote() {
   let noteTitle = document.getElementById('titleInput').value;
   let noteText = document.getElementById('textInput').value;
-
   titles.push(noteTitle);
   texts.push(noteText);
   renderNotes();
@@ -57,42 +79,43 @@ function addNote() {
   document.getElementById('textInput').value = '';
 }
 
-function deleteNote(i) {
-  titles.splice(i, 1);
-  texts.splice(i, 1);
+// Speichern neuer Notizen im Local Storage
+
+function saveNotes(){
+  let titlesAsText = JSON.stringify(titles);
+  let textsAsText = JSON.stringify(texts);
+  localStorage.setItem('titles', titlesAsText);
+  localStorage.setItem('texts', textsAsText);
+  }
+  
+// Laden neuer Notizen aus dem Local Storage
+
+  function load(){
+    let titlesAsText = localStorage.getItem('titles');
+    let textsAsText = localStorage.getItem('texts');
+    if (titlesAsText && textsAsText) {;
+    titles = JSON.parse(titlesAsText);
+    texts = JSON.parse(textsAsText);}
+  }
+
+  // Löschen einer Notiz
+  
+  function deleteNote(i) {
+  let deletedTitle = titles.splice(i, 1); 
+  let deletedText = texts.splice(i, 1); 
+  trashedTitles.push(deletedTitle);
+  trashedTexts.push(deletedText);
+  // titles.splice(i, 1);
+  // texts.splice(i, 1);
   renderNotes();
+  renderTrash()
   saveNotes();
   saveTrash();
   document.getElementById('titleInput').value = '';
   document.getElementById('textInput').value = '';
-  // let deleted = titles.splice(i, 1); trashedTitles.push(deleted);
-  // let deleted = texts.splice(i, 1); trashedTexts.push(deleted);
 }
 
-function saveNotes(){
-let titlesAsText = JSON.stringify(titles);
-let textsAsText = JSON.stringify(texts);
-localStorage.setItem('titles', titlesAsText);
-localStorage.setItem('texts', textsAsText);
-}
-
-function load(){
-  let titlesAsText = localStorage.getItem('titles');
-  let textsAsText = localStorage.getItem('texts');
-  if (titlesAsText && textsAsText) {
-  titles = JSON.parse(titlesAsText);
-  texts = JSON.parse(textsAsText);}
-}
-
-function renderTrash() {
-  const notesGallery = document.getElementById('trashed_notes');
-  notesGallery.innerHTML = '';
-  for (let i = 0; i < trashedTitels.length; i++) {
-    let trashedTitle = trashedTitels[i];
-    let trashedText = trashedTexts[i];
-    notesGallery.innerHTML += generateNotesHTML(i, trashedTitle, trashedText);
-  }
-}
+// Speichern gelöschter Notiz im Local Storage
 
 function saveTrash(){
   let trashedTitlesAsText = JSON.stringify(trashedTitles);
@@ -100,21 +123,13 @@ function saveTrash(){
   localStorage.setItem('trashedTitles', trashedTitlesAsText);
   localStorage.setItem('trashedTexts', trashedTextsAsText);
   }
-  
+
+// Laden gelöschter Notiz aus dem Local Storage
+
   function loadTrash(){
     let trashedTitlesAsText = localStorage.getItem('trashedTitles');
     let trashedTextsAsText = localStorage.getItem('trashedTexts');
     if (trashedTitlesAsText && trashedTextsAsText) {
-    trashedTitles = JSON.parse(trasehdTitlesAsText);
-    trashedTexts = JSON.parse(trasehdTextsAsText);}
-  }
-
-  function showTrashedNotes(){
-    document.getElementById('trashed_notes').classList.add('show-trashed-notes');
-    document.getElementById('new_notes').classList.add('d-none-new-notes');
-  }
-
-  function hideTrashedNotes(){
-    document.getElementById('trashed_notes').classList.remove('show-trashed-notes');
-    document.getElementById('new_notes').classList.remove('d-none-new-notes');
+    trashedTitles = JSON.parse(trashedTitlesAsText);
+    trashedTexts = JSON.parse(trashedTextsAsText);}
   }
