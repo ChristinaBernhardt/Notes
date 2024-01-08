@@ -31,7 +31,7 @@ function renderTrash() {
   for (let i = 0; i < trashedTitles.length; i++) {
     let trashedTitle = trashedTitles[i];
     let trashedText = trashedTexts[i];
-    notesGallery.innerHTML += generateNotesHTML(i, trashedTitle, trashedText);
+    notesGallery.innerHTML += generateTrashNotesHTML(i, trashedTitle, trashedText);
   }
 }
 
@@ -43,6 +43,17 @@ function generateNotesHTML(i, title, text) {
            <button onclick="deleteNote(${i})">Löschen</button>
         </div>
         `;
+}
+
+
+function generateTrashNotesHTML(i, title, text) {
+  return /* html */ `
+       <div class="note-card">
+          <div class="note-card-title">${title}</div> 
+          <div class="note-card-text">${text}</div>
+          <button onclick="deleteTrashNote(${i})">Endgültig löschen</button>
+       </div>
+       `;
 }
 
 // Burgermenü ein und aus
@@ -105,8 +116,6 @@ function saveNotes(){
   let deletedText = texts.splice(i, 1); 
   trashedTitles.push(deletedTitle);
   trashedTexts.push(deletedText);
-  // titles.splice(i, 1);
-  // texts.splice(i, 1);
   renderNotes();
   renderTrash()
   saveNotes();
@@ -132,4 +141,20 @@ function saveTrash(){
     if (trashedTitlesAsText && trashedTextsAsText) {
     trashedTitles = JSON.parse(trashedTitlesAsText);
     trashedTexts = JSON.parse(trashedTextsAsText);}
+  }
+
+  
+  function deleteTrashNote(i) {
+    // let deletedTitle = titles.splice(i, 1); 
+    // let deletedText = texts.splice(i, 1); 
+    // trashedTitles.push(deletedTitle);
+    // trashedTexts.push(deletedText);
+    trashedTitles.splice(i, 1);
+    trashedTexts.splice(i, 1);
+    renderNotes();
+    renderTrash()
+    saveNotes();
+    // saveTrash();
+    document.getElementById('titleInput').value = '';
+    document.getElementById('textInput').value = '';
   }
