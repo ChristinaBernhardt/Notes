@@ -45,7 +45,6 @@ function generateNotesHTML(i, title, text) {
         `;
 }
 
-
 function generateTrashNotesHTML(i, title, text) {
   return /* html */ `
        <div class="note-card">
@@ -57,7 +56,6 @@ function generateTrashNotesHTML(i, title, text) {
 }
 
 // Burgermenü ein und aus
-
 function showOverlay(){
   document.getElementById('overlay').classList.add('showOverlay');
 }
@@ -67,15 +65,17 @@ function deleteOverlay(){
 }
 
 // Menü: Ansicht ändern von Notes auf Trash und zurück
-
 function showTrashedNotes(){
   document.getElementById('trashed_notes').classList.add('show-trashed-notes');
   document.getElementById('new_notes').classList.add('d-none-new-notes');
+  document.getElementById('header').innerHTML= 'Papierkorb';
 }
 
 function hideTrashedNotes(){
   document.getElementById('trashed_notes').classList.remove('show-trashed-notes');
   document.getElementById('new_notes').classList.remove('d-none-new-notes');
+  document.getElementById('header').innerHTML= 'Meine Notizen';
+  
 }
 
 // Hinzufügen neuer Notizen
@@ -91,7 +91,6 @@ function addNote() {
 }
 
 // Speichern neuer Notizen im Local Storage
-
 function saveNotes(){
   let titlesAsText = JSON.stringify(titles);
   let textsAsText = JSON.stringify(texts);
@@ -100,7 +99,6 @@ function saveNotes(){
   }
   
 // Laden neuer Notizen aus dem Local Storage
-
   function load(){
     let titlesAsText = localStorage.getItem('titles');
     let textsAsText = localStorage.getItem('texts');
@@ -110,7 +108,6 @@ function saveNotes(){
   }
 
   // Löschen einer Notiz
-  
   function deleteNote(i) {
   let deletedTitle = titles.splice(i, 1); 
   let deletedText = texts.splice(i, 1); 
@@ -125,7 +122,6 @@ function saveNotes(){
 }
 
 // Speichern gelöschter Notiz im Local Storage
-
 function saveTrash(){
   let trashedTitlesAsText = JSON.stringify(trashedTitles);
   let trashedTextsAsText = JSON.stringify(trashedTexts);
@@ -134,7 +130,6 @@ function saveTrash(){
   }
 
 // Laden gelöschter Notiz aus dem Local Storage
-
   function loadTrash(){
     let trashedTitlesAsText = localStorage.getItem('trashedTitles');
     let trashedTextsAsText = localStorage.getItem('trashedTexts');
@@ -142,19 +137,14 @@ function saveTrash(){
     trashedTitles = JSON.parse(trashedTitlesAsText);
     trashedTexts = JSON.parse(trashedTextsAsText);}
   }
-
   
+  // endgültig löschen
   function deleteTrashNote(i) {
-    // let deletedTitle = titles.splice(i, 1); 
-    // let deletedText = texts.splice(i, 1); 
-    // trashedTitles.push(deletedTitle);
-    // trashedTexts.push(deletedText);
     trashedTitles.splice(i, 1);
     trashedTexts.splice(i, 1);
     renderNotes();
     renderTrash()
     saveNotes();
-    // saveTrash();
     document.getElementById('titleInput').value = '';
     document.getElementById('textInput').value = '';
   }

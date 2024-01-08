@@ -1,12 +1,15 @@
 * {
   margin: 0;
   box-sizing: border-box;
-}
+ }
+
 /* Maincontainer richtet Header und Footer aus */
 main {
   min-height: calc(100vh - 100px);
-
+  z-index: 0;
+  overflow: hidden;
 }
+
 body {
   overflow-x: hidden;
 }
@@ -17,11 +20,12 @@ img {
 }
 
 .burgerMenu {
-position: absolute;
-right: 16px;
-color: black;
-width: 50px;
-cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 16px;
+  color: black;
+  width: 50px;
+  cursor: pointer;
 }
 
 .overlay {
@@ -40,8 +44,10 @@ cursor: pointer;
   transform: translateX(105px);
   transition: all 225ms ease-in-out;
 }
+
 .showOverlay {
   transform: translateX(0);
+  position: absolute;
 
 }
 
@@ -52,6 +58,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+ 
+
 }
 
 footer {
@@ -121,6 +130,7 @@ textarea::placeholder {
   padding-top: 16px;
   padding-bottom: 16px;
 }
+
 .show-trashed-notes {
   display: flex;
 }
@@ -134,7 +144,7 @@ textarea::placeholder {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-  }
+}
 
 .note-card-title {
   margin: 0 0 1em 0;
@@ -167,6 +177,12 @@ button {
   background-color: grey;
   cursor: pointer;
 }
+
 .icons {
   cursor: pointer;
 }
+
+@media(max-width: 380px){
+  h1 {
+    font-size: 24px;
+  }}
